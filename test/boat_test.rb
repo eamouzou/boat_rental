@@ -17,13 +17,14 @@ class BoatTest < Minitest::Test
     assert_equal :kayak, @kayak.type
     assert_equal 20, @kayak.price_per_hour
     assert_equal 0, @kayak.hours_rented
+    assert_equal [], @kayak.renter
   end
 
   def test_it_adds_hour
     @kayak.add_hour
     @kayak.add_hour
     @kayak.add_hour
-    
+
     assert_equal 3, @kayak.hours_rented
   end
 

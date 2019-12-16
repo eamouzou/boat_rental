@@ -16,6 +16,5 @@ class RenterTest < Minitest::Test
 
     assert_equal "Patrick Star", @renter.name
     assert_equal "4242424242424242", @renter.credit_card_number
-    assert_equal [], @renter.rented_boat
   end
 end

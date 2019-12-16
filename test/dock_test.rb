@@ -23,6 +23,7 @@ class DockTest < Minitest::Test
 
     assert_equal "The Rowing Dock", @dock.name
     assert_equal 3, @dock.max_rental_time
+    assert_equal [], @dock.boats
   end
 
   def test_it_rents
@@ -30,7 +31,18 @@ class DockTest < Minitest::Test
     @dock.rent(@kayak_2, @patrick)
     @dock.rent(@sup_1, @eugene)
 
-    assert_equal [@kayak_1, @kayak_2], @patrick.rented_boat
-    assert_equal [@sup_1], @eugene.rented_boat
+    assert_equal [@patrick], @kayak_1.renter
+    assert_equal [@patrick], @kayak_2.renter
+    assert_equal [@eugene], @sup_1.renter
+  end
+
+  def test_rental_log
+    @dock.rent(@kayak_1, @patrick)
+    @dock.rent(@kayak_2, @patrick)
+    @dock.rent(@sup_1, @eugene)
+    
+    assert_equal ({@kayak_1 => @patrick,
+      @kayak_2 => @patrick,
+      @sup_1 => @eugene}), @dock.rental_log
   end
 end
