@@ -19,4 +19,15 @@ class Dock
       acc
     end
   end
+
+  def charge(boat)
+    x = {}
+    x[:card_number] = boat.renter[0].credit_card_number
+    if boat.hours_rented > @max_rental_time
+      x[:amount] = boat.price_per_hour * @max_rental_time
+    else
+      x[:amount] = boat.price_per_hour * boat.hours_rented
+    end
+    x    
+  end
 end
