@@ -12,4 +12,12 @@ class Boat
   def add_hour
     @hours_rented += 1
   end
+
+  def empty?
+    if @renter != []
+      false
+    else
+      true
+    end
+  end
 end
